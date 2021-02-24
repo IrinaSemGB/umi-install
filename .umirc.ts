@@ -8,6 +8,7 @@ export default defineConfig({
     { path: '/', component: '@/pages/index' },
     { path: '/counter', component: '@/pages/CounterList' },
     { path: '/todo', component: '@/pages/TodoApp/TodoList' },
+    { path: '/book', component: '@/pages/Book/BookList' },
   ],
   fastRefresh: {},
 });
