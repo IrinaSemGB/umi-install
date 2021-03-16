@@ -1,11 +1,8 @@
 import { Effect, Reducer } from 'umi';
 import axios from 'axios';
 import defaultReducers from '@/pages/defaultReducers';
-import { IBook } from '@/pages/Book/CreateBookModal';
 
-export interface IState {
-  bookList?: IBook[];
-}
+export interface IState {}
 
 export interface IModel {
   namespace: string;

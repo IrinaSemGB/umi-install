@@ -10,17 +10,19 @@ export interface IBook {
 }
 
 function CreateBookModal(props: any) {
-  const { modalAdd, setModalAdd } = props;
+  const { modalAdd, setModalAdd, authorList } = props;
   const toggleAdd = () => setModalAdd(!modalAdd);
 
   const [name, setName] = useState('Not assigned');
   const [purchasePrice, setPurchasePrice] = useState(0);
   const [sellingPrice, setSellingPrice] = useState(0);
 
+  let authors: any = [];
+
   function createBookHandler() {
     const newBook: IBook = {
       name: name,
-      authors: [],
+      authors: authors,
       purchasePrice: purchasePrice,
       sellingPrice: sellingPrice,
     };
@@ -64,6 +66,35 @@ function CreateBookModal(props: any) {
             className="form-control"
             type="text"
           />
+
+          <label htmlFor="exampleFormControlSelect2">
+            <h6> Author </h6>
+          </label>
+          <div>
+            {' '}
+            {'select authors from the list or '}
+            <a href="http://localhost:8000/author">create a new author</a>{' '}
+          </div>
+          <select
+            className="form-select"
+            size={3}
+            aria-label="size 3 select example"
+            value={authors}
+            multiple={true}
+            onChange={(event) => authors.push(event.target.value)}
+          >
+            {authorList
+              .sort(function (a: any, b: any) {
+                let nameA = a.name.toLowerCase(),
+                  nameB = b.name.toLowerCase();
+                return nameA < nameB ? -1 : 1;
+              })
+              .map((el: any) => (
+                <option value={el._id} key={el._id}>
+                  {el.name}
+                </option>
+              ))}
+          </select>
         </ModalBody>
 
         <ModalFooter>

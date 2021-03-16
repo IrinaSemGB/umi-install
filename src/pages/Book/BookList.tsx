@@ -4,13 +4,14 @@ import Book from '@/pages/Book/Book';
 import './cardStyle.css';
 
 function BookList(props: any) {
-  const { bookList = [] } = props;
+  const { bookList = [], authorList = [] } = props;
 
   const [modalAdd, setModalAdd] = useState(false);
   const toggleAdd = () => setModalAdd(!modalAdd);
 
   useEffect(() => {
     props.getBooks();
+    props.getAuthors();
   }, []);
 
   const deleteBookHandler = (id: string) => {
@@ -39,6 +40,7 @@ function BookList(props: any) {
                 deleteBookHandler={deleteBookHandler}
                 modalAdd={modalAdd}
                 setModalAdd={setModalAdd}
+                authorList={authorList}
               />
             </div>
           ))}
@@ -50,6 +52,7 @@ function BookList(props: any) {
 
 const mapStateToProps = (state: any) => ({
   bookList: state.Book.bookList,
+  authorList: state.Author.authorList,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -64,6 +67,11 @@ const mapDispatchToProps = (dispatch: any) => ({
       payload: {
         _id: id,
       },
+    }),
+  getAuthors: () =>
+    dispatch({
+      type: 'Author/getAuthors',
+      payload: {},
     }),
 });
 
