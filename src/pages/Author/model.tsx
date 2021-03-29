@@ -22,8 +22,8 @@ const callGetAuthors = () =>
     url: 'http://localhost:5000/author/search',
     method: 'POST',
   })
-    .then((res) => res.data)
-    .catch((err) => err);
+    .then((res: any) => res.data)
+    .catch((err: any) => err);
 
 const postCreate = (newAuthor: any) =>
   axios({
@@ -31,10 +31,10 @@ const postCreate = (newAuthor: any) =>
     method: 'POST',
     data: newAuthor,
   })
-    .then((res) => {
+    .then((res: any) => {
       return res.data;
     })
-    .catch((err) => err);
+    .catch((err: any) => err);
 
 const callCreateAuthor = (newAuthor: any) => postCreate(newAuthor);
 

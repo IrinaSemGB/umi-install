@@ -68,12 +68,12 @@ function CreateBookModal(props: any) {
           />
 
           <label htmlFor="exampleFormControlSelect2">
-            <h6> Author </h6>
+            <h6> Author(s) </h6>
           </label>
           <div>
             {' '}
             {'select authors from the list or '}
-            <a href="http://localhost:8000/author">create a new author</a>{' '}
+            <a href="http://localhost:8000/author">create new</a>{' '}
           </div>
           <select
             className="form-select"
@@ -98,10 +98,7 @@ function CreateBookModal(props: any) {
         </ModalBody>
 
         <ModalFooter>
-          <Button color="primary" onClick={createBookHandler}>
-            {' '}
-            + Add{' '}
-          </Button>{' '}
+          <Button onClick={createBookHandler}> + Add </Button>{' '}
           <Button color="secondary" onClick={toggleAdd}>
             {' '}
             Cancel{' '}

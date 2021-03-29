@@ -31,10 +31,10 @@ function Book(props: any) {
           )}
         </div>
 
-        <p className="card-text text-success"> {`${book.sellingPrice} $`} </p>
+        <p className="card-text"> {`${book.sellingPrice} $`} </p>
 
         <button
-          className="btn btn-outline-secondary"
+          className="btn"
           onClick={() => {
             props.deleteBookHandler(book._id);
           }}

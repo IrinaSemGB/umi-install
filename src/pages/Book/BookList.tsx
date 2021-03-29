@@ -1,7 +1,7 @@
 import { connect } from 'umi';
 import React, { useEffect, useState } from 'react';
 import Book from '@/pages/Book/Book';
-import './cardStyle.css';
+import '../cardStyle.css';
 
 function BookList(props: any) {
   const { bookList = [], authorList = [] } = props;
@@ -20,16 +20,13 @@ function BookList(props: any) {
 
   return (
     <div className="container">
+      <div className="top-bg"></div>
+
       <h1> Books </h1>
-      <button
-        onClick={toggleAdd}
-        type="button"
-        className="btn btn-success btn-sm"
-      >
+      <button onClick={toggleAdd} type="button" className="btn">
         {' '}
         Create New Book{' '}
       </button>
-      <hr />
 
       <div className="container-fluid d-flex justify-content-center">
         <div className="row">

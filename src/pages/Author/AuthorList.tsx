@@ -9,13 +9,14 @@ export interface IAuthor {
 }
 
 function AuthorList(props: any) {
-  const { authorList = [] } = props;
-
-  const [name, setName] = useState('');
-
   useEffect(() => {
     props.getAuthors();
+    props.getBooks();
   }, []);
+
+  const { authorList = [], bookList = [] } = props;
+
+  const [name, setName] = useState('');
 
   let books: any = [];
 
@@ -43,7 +44,7 @@ function AuthorList(props: any) {
           onChange={(event) => setName(event.target.value)}
           type="text"
         />
-        <Button color="success" onClick={createAuthorHandler}>
+        <Button type="button" className="btn" onClick={createAuthorHandler}>
           {' '}
           Create new{' '}
         </Button>
@@ -58,7 +59,7 @@ function AuthorList(props: any) {
         })
         .map((author: any, index: any) => (
           <ul className="list-group" key={author._id}>
-            <Author author={author} index={index} />
+            <Author author={author} index={index} bookList={bookList} />
           </ul>
         ))}
     </div>
@@ -67,6 +68,7 @@ function AuthorList(props: any) {
 
 const mapStateToProps = (state: any) => ({
   authorList: state.Author.authorList,
+  bookList: state.Book.bookList,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -82,6 +84,12 @@ const mapDispatchToProps = (dispatch: any) => ({
       payload: {
         newAuthor: newAuthor,
       },
+    }),
+
+  getBooks: () =>
+    dispatch({
+      type: 'Book/getBooks',
+      payload: {},
     }),
 });
 
